@@ -5,6 +5,8 @@ library(tidyverse)
 # with it.
 df <- starwars
 
+df
+
 # glimpse turns a data frame on its side. Super useful.
 df %>%
   glimpse()
@@ -19,21 +21,42 @@ df %>%
 # note: filtering on some logical excludes NAs
 df %>% 
   filter(height > 100,
+<<<<<<< HEAD
          sex == 'female',
          mass > 50) %>%
   arrange(desc(mass)) %>% 
   select(name, height, mass, species, films)
 
+=======
+         sex == 'female') %>% 
+  select(name, height, mass, species, films) %>% 
+  filter(mass > 50) %>% 
+  arrange(mass)
+>>>>>>> bbc42b06a25c942fc42290ee1e694d9d26269177
 
 
 # calculate a new column,weight_lbs = mass * 2.204623
 # Make sure it gets saved to the tibble...
 df <- df %>% 
   mutate(weight_lbs = mass * 2.204623)
+<<<<<<< HEAD
+=======
+  
+>>>>>>> bbc42b06a25c942fc42290ee1e694d9d26269177
 
 
 # group and summarize. Pay attention to NAs
 # get a count and mean mass by species
+df %>% glimpse
+
+
+df %>% 
+  group_by(species) %>% 
+  summarize(species_count = n(),
+            avg_mass = mean(mass, na.rm = TRUE)) 
+
+df %>% 
+  filter(species == 'Droid')
 
 
 # Lots of NAs for average... why? Even for large groups it's NA...
