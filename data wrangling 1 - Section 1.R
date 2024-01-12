@@ -17,11 +17,19 @@ df %>%
 # mass > 50, 
 # arrange by mass
 # note: filtering on some logical excludes NAs
+df %>% 
+  filter(height > 100,
+         sex == 'female',
+         mass > 50) %>%
+  arrange(desc(mass)) %>% 
+  select(name, height, mass, species, films)
+
 
 
 # calculate a new column,weight_lbs = mass * 2.204623
 # Make sure it gets saved to the tibble...
-
+df <- df %>% 
+  mutate(weight_lbs = mass * 2.204623)
 
 
 # group and summarize. Pay attention to NAs
