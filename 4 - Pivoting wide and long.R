@@ -152,6 +152,19 @@ bob <- read_csv('https://www.dropbox.com/s/mozqpceit51hia7/bob_ross.csv?dl=1')
 # of the tidying of the data we've done. It's a simple filter, rather than a 
 # group_by(), which is what we used to have to do when the data was wider.
 
+ri_long <- ri %>% 
+  pivot_longer(
+    cols = !religion,
+    names_to ='income_bracket',
+    values_to = 'household_num'
+  )
+
+
+ri_long %>% 
+  group_by(religion)
+
+
+
 ri %>% 
   pivot_longer(
     cols = !religion,
@@ -165,4 +178,14 @@ ri %>%
 
 
 
+
+
+
+
+
+
+
+bnames %>% 
+  pivot_wider(names_from = c(year,sex),
+              values_from = n)
 
